@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const Card = (makale) => {
   // GÖREV 5
   // ---------------------
@@ -17,6 +19,35 @@ const Card = (makale) => {
   //   </div>
   // </div>
   //
+  const divCard = document.createElement("div");
+  divCard.classList.add("card");
+
+  const divHeadline = document.createElement("div");
+  divHeadline.classList.add("headline");
+  divHeadline.textContent = makale.anabaslik;
+
+  const divAuthor = document.createElement("div");
+  divAuthor.classList.add("author");
+
+  const divImg = document.createElement("div");
+  divImg.classList.add("img-container");
+
+  const img = document.createElement("img");
+  img.src = makale.yazarFoto;
+
+  const span = document.createElement("span");
+  span.textContent = makale.yazarAdi + " tarafından";
+
+  divImg.appendChild(img);
+  divAuthor.appendChild(divImg);
+  divAuthor.appendChild(span);
+  divCard.appendChild(divHeadline);
+  divCard.appendChild(divAuthor);
+
+  divCard.addEventListener('click', () => {
+    console.log('Clicked on article:', makale.anabaslik);
+  });
+  return divCard;
 }
 
 const cardEkleyici = (secici) => {
@@ -28,6 +59,27 @@ const cardEkleyici = (secici) => {
   // Card bileşenini kullanarak yanıttaki her makale nesnesinden bir kart oluşturun.
   // Her cardı, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
+
+
+  const apiUrl = 'http://localhost:5001/api/makaleler';
+  let makaleler = "";
+  axios.get(apiUrl)
+    .then(response => {
+      makaleler = response.data.makaleler.javascript;
+      makaleler = makaleler.concat(response.data.makaleler.bootstrap);
+      makaleler = makaleler.concat(response.data.makaleler.teknoloji);
+      makaleler = makaleler.concat(response.data.makaleler.jquery);
+      makaleler = makaleler.concat(response.data.makaleler["node.js"]);
+
+      for (let i = 0; i < makaleler.length; i++) {
+        const card = Card(makaleler[i]);
+        const elementSecici = document.querySelector(secici);
+        elementSecici.appendChild(card);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
 export { Card, cardEkleyici }

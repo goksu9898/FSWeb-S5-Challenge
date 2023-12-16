@@ -53,7 +53,12 @@ Aşağıda listelenen minimum uygulanabilir ürün (MVP) spesifikasyonlarını k
 Aşağıdaki soruları yanıtlayarak bu sprint'in kavramlarını anladığınızı gösterin. Her sorudan sonra yanıtlarınızı eklemek için bu belgeyi düzenleyin.
 
 1. DOM nedir?
+DOM, web sayfalarının yapısını programlama dilleriyle temsil eden ve bu sayede web sayfaları üzerinde dinamik etkileşim sağlayan bir arayüzdür. HTML, CSS ve JavaScript kodlarını bir programın kullanabileceği nesneler haline getirir ve ağaç yapısıyla belgelerin elemanlarını düğümler olarak modeller.
 2. Bir event nedir?
+Bir event, tarayıcıda veya bir uygulamada meydana gelen belirli bir durumu veya kullanıcı etkileşimini temsil eder.
 3. Bir event dinleyici(listener) nedir?
+JavaScript'te event listener kullanılarak bu eventler algılanır ve belirli bir işlevin tetiklenmesi sağlanır.
 4. Neden bir NodeList'i Array'e dönüştürelim??
+Bir NodeList'i Array'e dönüştürmek, NodeList üzerinde Array metodlarını kullanma yeteneği kazandırarak daha fazla işlevselliğe ve esnekliğe olanak tanır, çünkü Array, özellikle forEach, map, filter gibi yaygın kullanılan metodlara sahiptir, bu da koleksiyon üzerinde daha kapsamlı işlemler gerçekleştirmeyi sağlar.
 5. Bileşen nedir?
+Bir bileşen, belirli bir işlevi veya özelliği temsil eden, genellikle modüler, bağımsız ve yeniden kullanılabilir bir programlama birimidir ve yazılım geliştirmede modülerlik ve sürdürülebilirlik sağlamak için kullanılır.

@@ -5,12 +5,29 @@ const Header = (baslik, tarih, yazi) => {
   // Kullanılan html etiketleri, öğelerin hiyerarşisi ve öznitelikleri sağlanan işaretlemeyle tam olarak eşleşmelidir!
   // Öğelerin içindeki metin, "textContent" özelliği kullanılarak ayarlanacaktır ("innerText" DEĞİL).
   //
-  //  <div class="header">
-  //    <span class="date">{ tarih }</span>
-  //    <h1>{ baslik }</h1>
-  //    <span class="temp">{ yazi }</span>
-  //  </div>
-  //
+  // <div class="header">
+  //   <span class="date">{tarih}</span>
+  //   <h1>{baslik}</h1>
+  //   <span class="temp">{yazi}</span>
+  // </div>
+
+
+  const headerDiv = document.createElement("div");
+  headerDiv.classList.add('header');
+  const span1 = document.createElement("span");
+  span1.classList.add("date");
+  span1.textContent = tarih;
+  const h1 = document.createElement("h1");
+  h1.textContent = baslik;
+  const span2 = document.createElement("span");
+  span2.classList.add("temp");
+  span2.textContent = yazi;
+
+  headerDiv.appendChild(span1);
+  headerDiv.appendChild(h1);
+  headerDiv.appendChild(span2);
+
+  return headerDiv;
 }
 
 const headerEkleyici = (secici) => {
@@ -23,7 +40,8 @@ const headerEkleyici = (secici) => {
 
   // İPUCU: querySelector bir string alabilir (bknz: querySelector("#wrapper")) 
   // fakat aynı zamanda bir değişken de alabilir (bknz: querySelector(secici))
- 
+  const headerElement = Header("Teknoloji Zamanı", "11 Kasım 2022", "sağdaki yazı");
+  const selectedElement = document.querySelector(secici);
+  selectedElement.appendChild(headerElement);
 }
-
 export { Header, headerEkleyici }
